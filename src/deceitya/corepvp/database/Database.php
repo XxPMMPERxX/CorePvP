@@ -3,6 +3,7 @@
 namespace deceitya\corepvp\database;
 
 use PDO;
+use PDOStatement;
 
 // とりまSQLite固定
 class Database
@@ -18,7 +19,7 @@ class Database
     public function open(): bool
     {
         $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
-        $this->db = new PDO("sqlite:{$this->file}", options:$options);
+        $this->db = new PDO("sqlite:{$this->file}", options: $options);
 
         return true;
     }
@@ -44,5 +45,14 @@ class Database
     public function rollback(): bool
     {
         return $this->db->rollBack();
+    }
+
+    public function prepare(string $query): PDOStatement
+    {
+        return $this->db->prepare($query);
+    }
+
+    public function createTables(): void
+    {
     }
 }
