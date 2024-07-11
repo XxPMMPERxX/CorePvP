@@ -7,10 +7,17 @@ use pocketmine\plugin\PluginBase;
 
 class Main extends PluginBase
 {
+    private Database $db;
+
     public function onEnable(): void
     {
-        $db = new Database("{$this->getDataFolder()}corepvp.db");
-        $db->open();
-        $db->createTables();
+        $this->db = new Database("{$this->getDataFolder()}corepvp.db");
+        $this->db->open();
+        $this->db->createTables();
+    }
+
+    public function onDisable(): void
+    {
+        $this->db->close();
     }
 }
