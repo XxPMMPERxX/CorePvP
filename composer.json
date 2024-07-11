@@ -1,0 +1,17 @@
+{
+    "name": "deceitya/corepvp",
+    "description": "CorePvP Plugin",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "deceitya"
+        }
+    ],
+    "require-dev": {
+        "pocketmine/pocketmine-mp": "^5.17"
+    }
+}
