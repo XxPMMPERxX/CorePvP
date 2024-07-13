@@ -21,14 +21,14 @@
 | began_at | DATETIME |  |  |  |  |  |  |  |  |
 | ended_at | DATETIME |  |  |  |  |  |  |  |  |
 
-### game_join_histories
+### join_destroying_core_histories
 | カラム名 | 型 | PK | FK | NN | UNIQUE | A_I | INDEX | DEFAULT | 備考 |
 | --- | --- | :---: | --- | :---: | :---: | :---: | :---: | --- | --- |
 | id | INTEGER UNSIGNED | ○ |  |  |  | ○ |  |  |  |
 | game | INTEGER UNSIGNED |  | game_histories.id | ○ |  |  |  |  |  |
 | player | INTEGER UNSIGNED |  | players.id | ○ |  |  |  |  |  |
 
-### core_break_histories
+### destroy_core_histories
 | カラム名 | 型 | PK | FK | NN | UNIQUE | A_I | INDEX | DEFAULT | 備考 |
 | --- | --- | :---: | --- | :---: | :---: | :---: | :---: | --- | --- |
 | id | INTEGER UNSIGNED | ○ |  |  |  | ○ |  |  |  |
@@ -40,7 +40,7 @@
 | カラム名 | 型 | PK | FK | NN | UNIQUE | A_I | INDEX | DEFAULT | 備考 |
 | --- | --- | :---: | --- | :---: | :---: | :---: | :---: | --- | --- |
 | id | INTEGER UNSIGNED | ○ |  |  |  | ○ |  |  |  |
-| game | INTEGER UNSIGNED | | game_join_histories.id | | | | | | |
+| game | INTEGER UNSIGNED | | game_histories.id | | | | | | |
 | dead | INTEGER UNSIGNED |  | players.id | ○ |  |  |  |  | 死んだプレイヤーのplayers.id |
 | killer | INTEGER UNSIGNED |  | players.id |  |  |  |  |  | 死んだ原因が他のプレイヤーから殺された場合のみ、殺してきたプレイヤーのplayers.id |
 | created_at | DATETIME |  |  | ○ |  |  |  | CURRENT_TIMESTAMP |  |
