@@ -22,14 +22,14 @@ class PlayerGameInfo
     private int $killCount;
     /** @var int デス数 */
     private int $deathCount;
-    /** @var int プレイ回数 */
-    private int $playCount;
+    /** @var int コア破壊プレイ回数 */
+    private int $destroyingCorePlayCount;
     /** @var int コアを破壊した回数 */
-    private int $breakCoreCount;
+    private int $destroyCoreCount;
     /** @var string 称号 */
     private string $tag;
 
-    public function __construct(int $id, UuidInterface $uuid, string $name, int $money = 0, float $level = 0, int $killCount = 0, int $deathCount = 0, int $playCount = 0, int $breakCoreCount = 0, string $tag = "")
+    public function __construct(int $id, UuidInterface $uuid, string $name, int $money = 0, float $level = 0, int $killCount = 0, int $deathCount = 0, int $destroyingCorePlayCount = 0, int $destroyCoreCount = 0, string $tag = "")
     {
         $this->id = $id;
         $this->uuid = $uuid;
@@ -38,8 +38,8 @@ class PlayerGameInfo
         $this->level = $level;
         $this->killCount = $killCount;
         $this->deathCount = $deathCount;
-        $this->playCount = $playCount;
-        $this->breakCoreCount = $breakCoreCount;
+        $this->destroyingCorePlayCount = $destroyingCorePlayCount;
+        $this->destroyCoreCount = $destroyCoreCount;
         $this->tag = $tag;
     }
 
@@ -132,29 +132,29 @@ class PlayerGameInfo
         return true;
     }
 
-    public function getPlayCount(): int
+    public function getDestroyingCorePlayCount(): int
     {
-        return $this->playCount;
+        return $this->destroyingCorePlayCount;
     }
 
-    public function increasePlayCount(int $amount = 1): bool
+    public function increaseDestroyingCorePlayCount(int $amount = 1): bool
     {
         if ($amount < 0) return false;
 
-        $this->playCount += $amount;
+        $this->destroyingCorePlayCount += $amount;
         return true;
     }
 
-    public function getBreakCoreCount(): int
+    public function getDestroyCoreCount(): int
     {
-        return $this->breakCoreCount;
+        return $this->destroyCoreCount;
     }
 
-    public function increaseBreakCoreCount(int $amount = 1): bool
+    public function increaseDestroyCoreCount(int $amount = 1): bool
     {
         if ($amount < 0) return false;
 
-        $this->breakCoreCount += $amount;
+        $this->destroyCoreCount += $amount;
         return true;
     }
 }

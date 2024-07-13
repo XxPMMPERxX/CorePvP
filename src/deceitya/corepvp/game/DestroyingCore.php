@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace deceitya\corepvp\game;
 
-class CoreBreak extends Game
+class DestroyingCore extends Game
 {
     protected function onRecruiting(): bool
     {
