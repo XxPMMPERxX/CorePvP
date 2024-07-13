@@ -17,9 +17,9 @@ class Account
     /** @var int レベル */
     private float $level;
     /** @var int キル数 */
-    private int $kill;
+    private int $killCount;
     /** @var int デス数 */
-    private int $death;
+    private int $deathCount;
     /** @var int プレイ回数 */
     private int $playCount;
     /** @var int コアを破壊した回数 */
