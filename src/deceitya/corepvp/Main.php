@@ -11,9 +11,11 @@ class Main extends PluginBase
 
     public function onEnable(): void
     {
-        $this->db = new Database("{$this->getDataFolder()}corepvp.db");
-        $this->db->open();
-        $this->db->createTables();
+        $this->saveDefaultConfig();
+        $config = $this->getConfig();
+
+        $this->db = new Database();
+        $this->db->open($config->getNested("database.url"), $config->getNested("database.user"), $config->getNested("database.password"));
     }
 
     public function onDisable(): void

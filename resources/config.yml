@@ -1,0 +1,4 @@
+database:
+  url: mysql:host=localhost;dbname=corepvp;charset=utf8
+  user:
+  password:
