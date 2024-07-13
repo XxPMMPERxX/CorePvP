@@ -7,7 +7,6 @@ namespace deceitya\corepvp\database;
 use PDO;
 use PDOStatement;
 
-// とりまSQLite固定
 class Database
 {
     private ?PDO $db;
