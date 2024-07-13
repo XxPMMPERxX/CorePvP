@@ -3,7 +3,7 @@
 一周回ってレガシーなコード
 
 # DB
-### player
+### players
 | カラム名 | 型 | PK | FK | NN | UNIQUE | A_I | INDEX | DEFAULT | 備考 |
 | --- | --- | :---: | --- | :---: | :---: | :---: | :---: | --- | --- |
 | id | INTEGER UNSIGNED | ○ |  |  |  | ○ |  |  |  |
