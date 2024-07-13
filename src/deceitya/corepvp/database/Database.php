@@ -9,7 +9,7 @@ use PDOStatement;
 class Database
 {
     private string $file;
-    private PDO $db;
+    private ?PDO $db;
 
     public function __construct(string $file)
     {
