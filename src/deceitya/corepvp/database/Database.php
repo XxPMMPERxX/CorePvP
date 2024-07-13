@@ -13,7 +13,7 @@ class Database
     public function open(string $connectUrl, string $user, string $password): bool
     {
         $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
-        $this->db = new PDO($connectUrl, $user, $password);
+        $this->db = new PDO($connectUrl, $user, $password, $options);
 
         return true;
     }
