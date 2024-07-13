@@ -28,10 +28,19 @@
 | game_id | INTEGER UNSIGNED |  | game_histories.id | ○ |  |  |  |  |  |
 | account_id | INTEGER UNSIGNED |  | accounts.id | ○ |  |  |  |  |  |
 
+### core_break_histories
+| カラム名 | 型 | PK | FK | NN | UNIQUE | A_I | INDEX | DEFAULT | 備考 |
+| --- | --- | :---: | --- | :---: | :---: | :---: | :---: | --- | --- |
+| id | INTEGER UNSIGNED | ○ |  |  |  | ○ |  |  |  |
+| game_id | INTEGER UNSIGNED |  | game_histories.id | ○ |  |  |  |  |  |
+| account_id | INTEGER UNSIGNED |  | accounts.id | ○ |  |  |  |  |  |
+| created_at | DATETIME |  |  | ○ |  |  |  | CURRENT_TIMESTAMP |  |
+
 ### death_histories
 | カラム名 | 型 | PK | FK | NN | UNIQUE | A_I | INDEX | DEFAULT | 備考 |
 | --- | --- | :---: | --- | :---: | :---: | :---: | :---: | --- | --- |
 | id | INTEGER UNSIGNED | ○ |  |  |  | ○ |  |  |  |
+| game_id | INTEGER UNSIGNED | | game_join_histories.id | | | | | | |
 | dead | INTEGER UNSIGNED |  | accounts.id | ○ |  |  |  |  | 死んだプレイヤーのaccounts.id |
 | killer | INTEGER UNSIGNED |  | accounts.id |  |  |  |  |  | 死んだ原因が他のプレイヤーから殺された場合のみ、殺してきたプレイヤーのaccounts.id |
 | created_at | DATETIME |  |  | ○ |  |  |  | CURRENT_TIMESTAMP |  |
