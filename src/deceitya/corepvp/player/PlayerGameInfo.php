@@ -1,10 +1,10 @@
 <?php
 
-namespace deceitya\corepvp\model;
+namespace deceitya\corepvp\player;
 
 use Ramsey\Uuid\UuidInterface;
 
-class Account
+class PlayerGameInfo
 {
     /** @var int DBのID */
     private int $id;
