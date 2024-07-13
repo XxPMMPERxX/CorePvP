@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace deceitya\corepvp\game;
 
 use DateTime;
-use deceitya\corepvp\player\PlayerExtend;
 use Generator;
+use pocketmine\player\Player;
 
 abstract class Game
 {
     /** @var int ゲームID */
     protected int $id;
-    /** @var PlayerExtend[] 参加しているプレイヤー */
+    /** @var Player[] 参加しているプレイヤー */
     protected array $players = [];
     /** @var Generatror ゲームフロー */
     protected Generator $flow;
@@ -54,17 +54,17 @@ abstract class Game
     /**
      * プレイヤーが参加しているかどうか
      */
-    public function isPlayerJoined(PlayerExtend $player): bool
+    public function isPlayerJoined(Player $player): bool
     {
         return in_array($player, $this->players, true);
     }
 
     /**
      * プレイヤーを参加させる
-     * @param PlayerExtend $player 参加させるプレイヤー
+     * @param Player $player 参加させるプレイヤー
      * @return bool 参加できたならtrue、すでにいる場合もtrue
      */
-    public function addPlayer(PlayerExtend $player): bool
+    public function addPlayer(Player $player): bool
     {
         if (!$this->isPlayerJoined($player)) {
             $this->players[] = $player;
@@ -76,10 +76,10 @@ abstract class Game
 
     /**
      * プレイヤーを退会させる
-     * @param PlayerExtend $player プレイヤー
+     * @param Player $player プレイヤー
      * @return bool プレイヤーがゲームに参加していて退会させれた場合はtrue、参加していない場合はfalse
      */
-    public function kickPlayer(PlayerExtend $player): bool
+    public function kickPlayer(Player $player): bool
     {
         if ($this->isPlayerJoined($player)) {
             array_values(array_diff($this->players, [$player]));
@@ -91,7 +91,7 @@ abstract class Game
 
     /**
      * 参加しているプレイヤーの配列を取得
-     * @return PlayerExtend[]
+     * @return Player[]
      */
     public function getPlayers(): array
     {

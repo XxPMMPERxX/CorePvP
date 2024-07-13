@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace deceitya\corepvp;
 
 use deceitya\corepvp\database\Database;
-use deceitya\corepvp\player\SetPlayerClass;
 use pocketmine\plugin\PluginBase;
 
 class Main extends PluginBase
@@ -24,7 +23,6 @@ class Main extends PluginBase
 
         // イベントリスナー
         $pluginManager = $this->getServer()->getPluginManager();
-        $pluginManager->registerEvents(new SetPlayerClass(), $this);
     }
 
     public function onDisable(): void
