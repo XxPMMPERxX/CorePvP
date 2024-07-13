@@ -25,22 +25,22 @@
 | カラム名 | 型 | PK | FK | NN | UNIQUE | A_I | INDEX | DEFAULT | 備考 |
 | --- | --- | :---: | --- | :---: | :---: | :---: | :---: | --- | --- |
 | id | INTEGER UNSIGNED | ○ |  |  |  | ○ |  |  |  |
-| game_id | INTEGER UNSIGNED |  | game_histories.id | ○ |  |  |  |  |  |
-| player_id | INTEGER UNSIGNED |  | players.id | ○ |  |  |  |  |  |
+| game | INTEGER UNSIGNED |  | game_histories.id | ○ |  |  |  |  |  |
+| player | INTEGER UNSIGNED |  | players.id | ○ |  |  |  |  |  |
 
 ### core_break_histories
 | カラム名 | 型 | PK | FK | NN | UNIQUE | A_I | INDEX | DEFAULT | 備考 |
 | --- | --- | :---: | --- | :---: | :---: | :---: | :---: | --- | --- |
 | id | INTEGER UNSIGNED | ○ |  |  |  | ○ |  |  |  |
-| game_id | INTEGER UNSIGNED |  | game_histories.id | ○ |  |  |  |  |  |
-| player_id | INTEGER UNSIGNED |  | players.id | ○ |  |  |  |  |  |
+| game | INTEGER UNSIGNED |  | game_histories.id | ○ |  |  |  |  |  |
+| player | INTEGER UNSIGNED |  | players.id | ○ |  |  |  |  |  |
 | created_at | DATETIME |  |  | ○ |  |  |  | CURRENT_TIMESTAMP |  |
 
 ### death_histories
 | カラム名 | 型 | PK | FK | NN | UNIQUE | A_I | INDEX | DEFAULT | 備考 |
 | --- | --- | :---: | --- | :---: | :---: | :---: | :---: | --- | --- |
 | id | INTEGER UNSIGNED | ○ |  |  |  | ○ |  |  |  |
-| game_id | INTEGER UNSIGNED | | game_join_histories.id | | | | | | |
+| game | INTEGER UNSIGNED | | game_join_histories.id | | | | | | |
 | dead | INTEGER UNSIGNED |  | players.id | ○ |  |  |  |  | 死んだプレイヤーのplayers.id |
 | killer | INTEGER UNSIGNED |  | players.id |  |  |  |  |  | 死んだ原因が他のプレイヤーから殺された場合のみ、殺してきたプレイヤーのplayers.id |
 | created_at | DATETIME |  |  | ○ |  |  |  | CURRENT_TIMESTAMP |  |
