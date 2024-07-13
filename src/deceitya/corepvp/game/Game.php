@@ -2,6 +2,7 @@
 
 namespace deceitya\corepvp\game;
 
+use DateTime;
 use Generator;
 use pocketmine\player\Player;
 
@@ -13,11 +14,39 @@ abstract class Game
     protected array $players = [];
     /** @var Generatror ゲームフロー */
     protected Generator $flow;
+    /** @var DateTime 開始時刻 */
+    protected ?DateTime $beganAt;
+    /** @var DateTime 終了時刻 */
+    protected ?DateTime $endedAt;
 
     public function __construct(int $id)
     {
         $this->id = $id;
         $this->flow = $this->flow();
+    }
+
+    /**
+     * ゲームのID取得
+     */
+    public function getID(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * ゲーム開始時刻を取得
+     */
+    public function getBecanDateTime(): ?DateTime
+    {
+        return $this->beganAt;
+    }
+
+    /**
+     * ゲーム終了時刻を取得
+     */
+    public function getEndedDateTime(): ?DateTime
+    {
+        return $this->endedAt;
     }
 
     /**
