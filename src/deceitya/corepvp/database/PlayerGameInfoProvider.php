@@ -9,11 +9,11 @@ use Ramsey\Uuid\UuidInterface;
 
 interface PlayerGameInfoProvider
 {
-    public function find(int $id): PlayerGameInfo;
+    public function find(int $id): ?PlayerGameInfo;
 
-    public function findByUUID(UuidInterface $uuid): PlayerGameInfo;
+    public function findByUUID(UuidInterface $uuid): ?PlayerGameInfo;
 
-    public function findByName(string $name): PlayerGameInfo;
+    public function findByName(string $name): ?PlayerGameInfo;
 
     public function store(PlayerGameInfo $info): bool;
 }

@@ -8,29 +8,34 @@ use Ramsey\Uuid\UuidInterface;
 
 class PlayerGameInfo
 {
-    /** @var int DBのID */
-    private int $id;
-    /** @var UuidInterface プレイヤーのUUID */
-    private UuidInterface $uuid;
-    /** @var string プレイヤー名 */
-    private string $name;
-    /** @var int お金 */
-    private int $money;
-    /** @var int レベル */
-    private float $level;
-    /** @var int キル数 */
-    private int $killCount;
-    /** @var int デス数 */
-    private int $deathCount;
-    /** @var int コア破壊プレイ回数 */
-    private int $destroyingCorePlayCount;
-    /** @var int コアを破壊した回数 */
-    private int $destroyCoreCount;
-    /** @var string 称号 */
-    private string $tag;
-
-    public function __construct(int $id, UuidInterface $uuid, string $name, int $money = 0, float $level = 0, int $killCount = 0, int $deathCount = 0, int $destroyingCorePlayCount = 0, int $destroyCoreCount = 0, string $tag = "")
-    {
+    /**
+     * コンストラクタ
+     *
+     * @param integer       $id                      DB上のプレイヤーID
+     * @param UuidInterface $uuid                    プレイヤーUUID
+     * @param string        $name                    プレイヤー名
+     * @param integer       $money                   所持金
+     * @param integer       $level                   レベル
+     * @param integer       $killCount               キル数
+     * @param integer       $deathCount              デス数
+     * @param integer       $destroyingCorePlayCount コア破壊プレイ回数
+     * @param integer       $destroyCoreCount        コアを破壊した回数
+     * @param integer       $destroyingCoreWinCount  コア破壊勝利数
+     * @param string        $tag                     称号
+     */
+    public function __construct(
+        private int $id,
+        private UuidInterface $uuid,
+        private string $name,
+        private int $money = 0,
+        private float $level = 0,
+        private int $killCount = 0,
+        private int $deathCount = 0,
+        private int $destroyingCorePlayCount = 0,
+        private int $destroyCoreCount = 0,
+        private int $destroyingCoreWinCount = 0,
+        private string $tag = ""
+    ) {
         $this->id = $id;
         $this->uuid = $uuid;
         $this->name = $name;
@@ -155,6 +160,19 @@ class PlayerGameInfo
         if ($amount < 0) return false;
 
         $this->destroyCoreCount += $amount;
+        return true;
+    }
+
+    public function getDestroyingCoreWinCount(): int
+    {
+        return $this->destroyingCoreWinCount;
+    }
+
+    public function increaseDestroyingCoreWinCount(int $amount = 1): bool
+    {
+        if ($amount < 0) return false;
+
+        $this->destroyingCoreWinCount += $amount;
         return true;
     }
 }
