@@ -15,7 +15,7 @@ class PlayerGameInfo
      * @param UuidInterface $uuid                    プレイヤーUUID
      * @param string        $name                    プレイヤー名
      * @param integer       $money                   所持金
-     * @param integer       $level                   レベル
+     * @param float         $level                   レベル
      * @param integer       $killCount               キル数
      * @param integer       $deathCount              デス数
      * @param integer       $destroyingCorePlayCount コア破壊プレイ回数
@@ -35,18 +35,7 @@ class PlayerGameInfo
         private int $destroyCoreCount = 0,
         private int $destroyingCoreWinCount = 0,
         private string $tag = ""
-    ) {
-        $this->id = $id;
-        $this->uuid = $uuid;
-        $this->name = $name;
-        $this->money = $money;
-        $this->level = $level;
-        $this->killCount = $killCount;
-        $this->deathCount = $deathCount;
-        $this->destroyingCorePlayCount = $destroyingCorePlayCount;
-        $this->destroyCoreCount = $destroyCoreCount;
-        $this->tag = $tag;
-    }
+    ) {}
 
     public function getID(): int
     {
