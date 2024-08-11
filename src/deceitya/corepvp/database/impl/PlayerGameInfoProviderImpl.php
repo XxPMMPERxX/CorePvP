@@ -76,20 +76,14 @@ class PlayerGameInfoProviderImpl implements PlayerGameInfoProvider
         $this->db = $db;
     }
 
-    /**
-     * プレイヤーIDからデータを取得
-     *
-     * @param integer $id
-     * @return PlayerGameInfo|null
-     */
     public function find(int $id): ?PlayerGameInfo
     {
         // IDでフィルターをかける
-        $filtered = array_filter($this->infos, function(PlayerGameInfo $info) use ($id) {
+        $filtered = array_filter($this->infos, function (PlayerGameInfo $info) use ($id) {
             return $info->getID() === $id;
         });
         if (count($filtered) > 0) {
-            return reset($filtered);// resetで連想配列の一番最初の値が取得できる
+            return reset($filtered); // resetで連想配列の一番最初の値が取得できる
         }
 
         // SQL
@@ -109,12 +103,6 @@ class PlayerGameInfoProviderImpl implements PlayerGameInfoProvider
         return $info;
     }
 
-    /**
-     * プレイヤーのUUIDからデータを取得
-     *
-     * @param UuidInterface $uuid
-     * @return PlayerGameInfo|null
-     */
     public function findByUUID(UuidInterface $uuid): ?PlayerGameInfo
     {
         // メモリにデータが存在している場合はそれを返す
@@ -139,20 +127,14 @@ class PlayerGameInfoProviderImpl implements PlayerGameInfoProvider
         return $info;
     }
 
-    /**
-     * プレイヤーの名前からデータを取得
-     *
-     * @param string $name
-     * @return PlayerGameInfo|null
-     */
     public function findByName(string $name): ?PlayerGameInfo
     {
         // 名前でフィルターをかける
-        $filtered = array_filter($this->infos, function(PlayerGameInfo $info) use ($name) {
+        $filtered = array_filter($this->infos, function (PlayerGameInfo $info) use ($name) {
             return $info->getName() === $name;
         });
         if (count($filtered) > 0) {
-            return reset($filtered);// resetで連想配列の一番最初の値が取得できる
+            return reset($filtered); // resetで連想配列の一番最初の値が取得できる
         }
 
         // SQL
@@ -172,15 +154,9 @@ class PlayerGameInfoProviderImpl implements PlayerGameInfoProvider
         return $info;
     }
 
-    /**
-     * Undocumented function
-     *
-     * @param PlayerGameInfo $info
-     * @return boolean
-     */
     public function store(PlayerGameInfo $info): bool
     {
-
+        return false;
     }
 
     private function generatePlayerGameInfoFromResult(array $result)
