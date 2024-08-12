@@ -64,6 +64,7 @@
 | 称号1 | tag1 | INTEGER UNSIGNED |  | tags.id | ○ |  |  |  |  | tags.type = 1のもの |
 | 称号2 | tag2 | INTEGER UNSIGNED |  | tags.id | ○ |  |  |  |  | tags.type = 2のもの |
 | 称号3 | tag3 | INTEGER UNSIGNED |  | tags.id | ○ |  |  |  |  | tags.type = 1のもの |
+| 作成日 | created_at | DATETIME |  |  | ○ |  |  |  | CURRENT_TIMESTAMP |  |
 
 ### game_histories(ゲーム開催履歴)
 | 論理カラム名 | 物理カラム名 | 型 | PK | FK | NN | UNIQUE | A_I | INDEX | DEFAULT | 備考 |
@@ -96,5 +97,6 @@
 | ID | id | INTEGER UNSIGNED | ○ |  |  |  | ○ |  |  |  |
 | ゲームID | game | INTEGER UNSIGNED | | game_histories.id |  |  |  |  |  |  |
 | 死亡プレイヤーID | dead | INTEGER UNSIGNED |  | players.id | ○ |  |  |  |  | 死んだプレイヤーのplayers.id |
+| 死亡メッセージ | message | VARCHAR(100) |  |  |  |  |  |  |  | PlayerDeathEvent::getDeathMessage()を記録 |
 | キルプレイヤー | killer | INTEGER UNSIGNED |  | players.id |  |  |  |  |  | 死んだ原因が他のプレイヤーから殺された場合のみ、殺してきたプレイヤーのplayers.id |
 | 作成日 | created_at | DATETIME |  |  | ○ |  |  |  | CURRENT_TIMESTAMP |  |
