@@ -3,6 +3,23 @@
 一周回ってレガシーなコード
 
 # DB
+## マスター
+### teams(チーム)
+| 論理カラム名 | 物理カラム名 | 型 | PK | FK | NN | UNIQUE | A_I | INDEX | DEFAULT | 備考 |
+| --- | --- | --- | :---: | --- | :---: | :---: | :---: | :---: | --- | --- |
+| ID | id | INTEGER UNSIGNED | ○ |  |  |  | ○ |  |  |  |
+| 名前 | name | VARCHAR(10) |  |  | ○ |  |  |  |  |  |
+| 作成日 | created_at | DATETIME |  |  | ○ |  |  |  | CURRENT_TIMESTAMP |  |
+
+### tags(称号)
+| 論理カラム名 | 物理カラム名 | 型 | PK | FK | NN | UNIQUE | A_I | INDEX | DEFAULT | 備考 |
+| --- | --- | --- | :---: | --- | :---: | :---: | :---: | :---: | --- | --- |
+| ID | id | INTEGER UNSIGNED | ○ |  |  |  | ○ |  |  |  |
+| 称号 | tag | VARCHAR(10) |  |  | ○ |  |  |  |  |  |
+| 分類 | type | TINYINT UNSIGNED |  |  | ○ |  |  |  |  | 1:主称号 / 2:助詞等 |
+| 作成日 | created_at | DATETIME |  |  | ○ |  |  |  | CURRENT_TIMESTAMP |  |
+
+## トランザクション
 ### players(プレイヤー)
 | 論理カラム名 | 物理カラム名 | 型 | PK | FK | NN | UNIQUE | A_I | INDEX | DEFAULT | 備考 |
 | --- | --- | --- | :---: | --- | :---: | :---: | :---: | :---: | --- | --- |
@@ -40,6 +57,14 @@
 | 更新理由 | reason | VARCHAR(50) |  |  |  |  |  |  |  |  |
 | 作成日 | created_at | DATETIME |  |  | ○ |  |  |  | CURRENT_TIMESTAMP |  |
 
+### tag_histories(称号更新履歴)
+| 論理カラム名 | 物理カラム名 | 型 | PK | FK | NN | UNIQUE | A_I | INDEX | DEFAULT | 備考 |
+| --- | --- | --- | :---: | :---: | :---: | :---: | :---: | :---: | --- | --- |
+| ID | id | INTEGER UNSIGNED | ○ |  |  |  | ○ |  |  |  |
+| 称号1 | tag1 | INTEGER UNSIGNED |  | tags.id | ○ |  |  |  |  | tags.type = 1のもの |
+| 称号2 | tag2 | INTEGER UNSIGNED |  | tags.id | ○ |  |  |  |  | tags.type = 2のもの |
+| 称号3 | tag3 | INTEGER UNSIGNED |  | tags.id | ○ |  |  |  |  | tags.type = 1のもの |
+
 ### game_histories(ゲーム開催履歴)
 | 論理カラム名 | 物理カラム名 | 型 | PK | FK | NN | UNIQUE | A_I | INDEX | DEFAULT | 備考 |
 | --- | --- | --- | :---: | :---: | :---: | :---: | :---: | :---: | --- | --- |
@@ -54,7 +79,7 @@
 | ID | id | INTEGER UNSIGNED | ○ |  |  |  | ○ |  |  |  |
 | ゲームID | game | INTEGER UNSIGNED |  | game_histories.id | ○ |  |  |  |  |  |
 | プレイヤーID | player | INTEGER UNSIGNED |  | players.id | ○ |  |  |  |  |  |
-| チーム | team | INTEGER UNSIGNED |  |  | ○ |  |  |  |  |  |
+| チーム | team | INTEGER UNSIGNED |  | teams.id | ○ |  |  |  |  |  |
 | 作成日 | created_at | DATETIME |  |  | ○ |  |  |  | CURRENT_TIMESTAMP |  |
 
 ### destroy_core_histories(コア破壊履歴)
