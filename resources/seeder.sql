@@ -8,6 +8,10 @@ CREATE TABLE players (
 
 CREATE INDEX player_uuid_index ON players(uuid);
 
+INSERT INTO players (uuid) VALUES
+    ('f60d080f-8c27-4752-a527-8a84463446ce'),
+    ('bbc79fae-f1c4-4606-b9f0-0f15fd944bd6');
+
 CREATE TABLE name_histories (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     player INTEGER NOT NULL,
@@ -45,6 +49,8 @@ CREATE TABLE game_histories (
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+INSERT INTO game_histories (id) VALUES (null), (null), (null);
+
 CREATE TABLE join_game_histories (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     game INTEGER NOT NULL,
@@ -55,6 +61,12 @@ CREATE TABLE join_game_histories (
     FOREIGN KEY (player) REFERENCES players(id)
 );
 
+INSERT INTO join_game_histories (game, player, team) VALUES
+    (1, 1, 1),
+    (1, 2, 2),
+    (2, 1, 1),
+    (2, 2, 2);
+
 CREATE TABLE destroy_core_histories (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     game INTEGER NOT NULL,
@@ -63,6 +75,17 @@ CREATE TABLE destroy_core_histories (
     FOREIGN KEY (game) REFERENCES game_histories(id),
     FOREIGN KEY (player) REFERENCES players(id)
 );
+
+INSERT INTO destroy_core_histories (game, player) VALUES
+    (1, 1),
+    (1, 1),
+    (1, 1),
+    (1, 2),
+    (1, 2),
+    (1, 2),
+    (1, 1),
+    (2, 1),
+    (2, 1);
 
 CREATE TABLE death_histories (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
